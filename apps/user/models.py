@@ -10,7 +10,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(unique=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core import validators as v
 
 from .services import avatar_upload
-from enums.profile_emums import REGEXP_NAME
+from enums.regex_enum import RegEx as R
 
 UserModel = get_user_model()
 
@@ -13,11 +13,11 @@ class ProfileModel(models.Model):
     class Meta:
         db_table = 'profile'
 
-    name = models.CharField(max_length=20,validators=[
-        v.RegexValidator(REGEXP_NAME, 'Only alpha, min 2 max 20 ch')
+    name = models.CharField(max_length=20, validators=[
+        v.RegexValidator(R.NAME.reg, R.NAME.msg)
     ])
-    surname = models.CharField(max_length=20,validators=[
-        v.RegexValidator(REGEXP_NAME, 'Only alpha, min 2 max 20 ch')
+    surname = models.CharField(max_length=20, validators=[
+        v.RegexValidator(R.NAME.reg, R.NAME.msg)
     ])
     age = models.IntegerField(validators=[
         v.MinValueValidator(1),
